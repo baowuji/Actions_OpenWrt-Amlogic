@@ -25,7 +25,7 @@ sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/auto
 sed -i "s/OpenWrt /Deng Build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 
 # Modify default IP（FROM 192.168.1.1 CHANGE TO 10.10.10.1）
-sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.8.1/g' package/base-files/files/bin/config_generate
 
 # Modify system hostname（FROM OpenWrt CHANGE TO OpenWrt-N1）
 # sed -i 's/OpenWrt/OpenWrt-N1/g' package/base-files/files/bin/config_generate
@@ -35,6 +35,8 @@ sed -i 's/192.168.1.1/10.10.10.1/g' package/base-files/files/bin/config_generate
 
 sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba4/files/smb.conf.template
 
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # 拉取软件包
 
